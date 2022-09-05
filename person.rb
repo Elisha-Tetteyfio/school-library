@@ -10,13 +10,13 @@ class Person
     return true if is_of_age? || @parent_permission
   end
 
-  def is_of_age?
+  def of_age?
     return false unless @age >= 18
 
     true
   end
 
-  private :is_of_age?
+  private :of_age?
   attr_reader :id
   attr_accessor :name, :age
 end
