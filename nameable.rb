@@ -8,6 +8,7 @@ class BaseDecorator < Nameable
   attr_accessor :component
 
   def initialize(nameable)
+    super()
     @nameable = nameable
   end
 
@@ -24,6 +25,6 @@ end
 
 class TrimmerDecorator < BaseDecorator
   def correct_name
-    @nameable.correct_name.length > 10 ? "#{@nameable.correct_name[0...10]}" : @nameable.correct_name
+    @nameable.correct_name.length > 10 ? @nameable.correct_name[0...10] : @nameable.correct_name
   end
 end
