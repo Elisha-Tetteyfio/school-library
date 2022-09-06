@@ -1,4 +1,6 @@
-class Person
+require './nameable'
+
+class Person < Nameable
   def initialize(age, name = 'Unknown', parent_permission: true)
     @id = rand
     @name = name
@@ -16,7 +18,20 @@ class Person
     true
   end
 
+  def correct_name
+    @name
+  end
+
   private :of_age?
   attr_reader :id
   attr_accessor :name, :age
 end
+
+### Tests
+
+person = Person.new(22, 'maximilianus')
+puts person.correct_name
+capitalizedPerson = CapitalizeDecorator.new(person)
+puts capitalizedPerson.correct_name
+capitalizedTrimmedPerson = TrimmerDecorator.new(capitalizedPerson)
+puts capitalizedTrimmedPerson.correct_name
