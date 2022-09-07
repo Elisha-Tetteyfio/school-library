@@ -27,8 +27,8 @@ class Person < Nameable
     @name
   end
 
-  def add_rental(rental)
-    @rentals.push(rental)
+  def add_rental(date, book)
+    @rentals << Rental.new(date, book, self)
   end
 
   private :of_age?
