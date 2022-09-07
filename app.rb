@@ -9,6 +9,7 @@ class App
     @books = []
     @students = []
     @teachers = []
+    @rentals = []
   end
 
   def list_books
@@ -54,7 +55,18 @@ class App
     @books << new_book
     puts "#{new_book} added successfully"
   end
+
+  def create_rental
+    puts "Enter date"
+    date = gets.chomp
+    puts "Enter book"
+    book = gets.chomp
+    puts "Enter person"
+    person = gets.chomp
+    new_rental = Rental.new(date, book, person)
+    @rentals << new_rental
+    puts "#{new_rental} added successfully"
+  end
 end
 
 pp = App.new
-pp.create_book
