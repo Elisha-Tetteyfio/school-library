@@ -44,7 +44,17 @@ class App
       self.create_person
     end
   end
+
+  def create_book
+    p "Enter book title"
+    title = gets.chomp
+    p "Enter author"
+    author = gets.chomp
+    new_book = Book.new(title, author)
+    @books << new_book
+    puts "#{new_book} added successfully"
+  end
 end
 
 pp = App.new
-pp.create_person
+pp.create_book
