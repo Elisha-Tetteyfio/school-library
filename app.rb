@@ -16,6 +16,10 @@ class App
     @books
   end
 
+  def list_rentals
+    @rentals
+  end
+
   def list_people
     return @students, @teachers
   end
