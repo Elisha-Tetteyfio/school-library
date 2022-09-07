@@ -2,23 +2,24 @@
 require './app'
 
 def options
-  p "1. List all books"
-  p "2. List all people"
-  p "3. Create a person (teacher or student)"
-  p "4. Create a book"
-  p "5. Create a rental"
-  p "6. List all rentals for a person"
-  p "7. Quit"
+  print "\nPlease choose an option by entering a number \n\n"
+  print "1 - List all books \n"
+  print "2 - List all people \n"
+  print "3 - Create a person (teacher or student) \n"
+  print "4 - Create a book \n"
+  print "5 - Create a rental \n"
+  print "6 - List all rentals for a person \n"
+  print "7 - Quit \n"
   user_input = gets.chomp.to_i
 end
 
 def interraction(app)
   user_input = options
   if user_input == 1
-    puts app.list_books
+    app.list_books
     interraction(app)
   elsif user_input == 2
-    puts app.list_people
+    app.list_people
     interraction(app)
   elsif user_input == 3
     app.create_person
@@ -38,7 +39,7 @@ def interraction(app)
     puts "No option for #{user_input}"
     interraction(app)
   end
-en
+end
 
 def main
   app = App.new

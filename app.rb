@@ -14,7 +14,7 @@ class App
   end
 
   def list_books
-    @books
+    @books.each_with_index { |book, i| print "(#{i}) Title: \"#{book.title}\", Author: #{book.author}\n"}
   end
 
   def list_rentals
@@ -22,44 +22,53 @@ class App
   end
 
   def list_people
-    return @students, @teachers
+    @students.each {|s| print "[#{s.class}] Name: #{s.name}, ID: #{s.id}, Age: #{s.age}\n"}
+    @teachers.each {|s| print "[#{s.class}] Name: #{s.name}, ID: #{s.id}, Age: #{s.age}\n"}
   end
 
   def create_person
-    p "Do you want to create a 1. Student  2. Teacher"
+    print "Do you want to create: \n 1 - Student \n 2 - Teacher \n 3 - Cancel \n "
     user_input = gets.chomp.to_i
     
     if user_input == 1
-      p "Enter age"
+      print " Enter student age: "
       age = gets.chomp.to_i
-      p "Enter classroom"
+      print " Enter classroom: "
       classroom = gets.chomp
+      print " Enter name: "
+      name = gets.chomp
       new_student = Student.new(age, classroom)
-      @students.push(new_student)
-      print @students
-      puts "#{new_student} added successfully"
+      new_student.name = name unless name.empty?
+      @students << new_student
+      puts " #{new_student.name} added successfully"
     elsif user_input == 2
-      p "Enter age"
+      print " Enter teacher age: "
       age = gets.chomp.to_i
-      p "Enter specialization"
+      print " Enter specialization: "
       specialization = gets.chomp
+      print " Enter name: "
+      name = gets.chomp
       new_teacher = Teacher.new(age, specialization)
+      new_teacher.name = name unless name.empty?
       @teachers << new_teacher
-      puts "#{new_teacher} added successfully"
+      puts " #{new_teacher.name} added successfully"
+    elsif user_input == 3
+      return
     else 
-      puts "Wrong input option"
+      puts " Wrong input option"
       self.create_person
     end
   end
 
   def create_book
-    p "Enter book title"
+    print "Create book \n"
+    print " Enter book title: "
     title = gets.chomp
-    p "Enter author"
+    print " Enter author name: "
     author = gets.chomp
     new_book = Book.new(title, author)
     @books << new_book
-    puts "#{new_book} added successfully"
+    puts " '#{new_book.title}' added successfully"
   end
 
   def create_rental
