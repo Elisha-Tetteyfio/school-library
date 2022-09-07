@@ -1,9 +1,10 @@
 require './book'
 require './student'
 require './teacher'
+require './rental'
 
 class App
-  attr_accessor :books, :people
+  attr_accessor :books, :students, :teachers, :rentals
 
   def initialize
     @books = []
@@ -34,7 +35,8 @@ class App
       p "Enter classroom"
       classroom = gets.chomp
       new_student = Student.new(age, classroom)
-      @students << new_student
+      @students.push(new_student)
+      print @students
       puts "#{new_student} added successfully"
     elsif user_input == 2
       p "Enter age"
@@ -72,5 +74,3 @@ class App
     puts "#{new_rental} added successfully"
   end
 end
-
-pp = App.new
