@@ -18,7 +18,12 @@ class App
   end
 
   def list_rentals
-    @rentals
+    puts "Enter person ID: "
+    user_input = gets.chomp.to_i
+    user_rentals = []
+    @rentals.each {|r|  user_input == r.person.id ? user_rentals << r : ""  }
+    print "Rentals: \n"
+    user_rentals.each {|r| print " Date: #{r.date}, Title: #{r.book.title}, Author: #{r.book.author}\n" }
   end
 
   def list_people
@@ -74,12 +79,15 @@ class App
   def create_rental
     puts "Enter date"
     date = gets.chomp
-    puts "Enter book"
-    book = gets.chomp
-    puts "Enter person"
-    person = gets.chomp
-    new_rental = Rental.new(date, book, person)
+    puts "Select book number"
+    list_books
+    book = gets.chomp.to_i
+    puts "Enter person by number NOT ID"
+    people = [*@students, *@teachers]
+    people.each_with_index {|s, i| print "(#{i}) [#{s.class}] Name: #{s.name}, ID: #{s.id}, Age: #{s.age}\n"}
+    person = gets.chomp.to_i
+    new_rental = Rental.new(date, @books[book], people[person])
     @rentals << new_rental
-    puts "#{new_rental} added successfully"
+    puts 'Rental added successfully'
   end
 end
