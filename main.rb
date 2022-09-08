@@ -10,33 +10,29 @@ def options
   print "5 - Create a rental \n"
   print "6 - List all rentals for a person \n"
   print "7 - Quit \n"
-  user_input = gets.chomp.to_i
+  gets.chomp.to_i
 end
 
 def interraction(app)
   user_input = options
-  if user_input == 1
+  case user_input
+  when 1
     app.list_books
     interraction(app)
-  elsif user_input == 2
+  when 2
     app.list_people
     interraction(app)
-  elsif user_input == 3
+  when 3
     app.create_person
     interraction(app)
-  elsif user_input == 4
+  when 4
     app.create_book
     interraction(app)
-  elsif user_input == 5
+  when 5
     app.create_rental
     interraction(app)
-  elsif user_input == 6
+  when 6
     app.list_rentals
-    interraction(app)
-  elsif user_input == 7
-    return
-  else
-    puts "No option for #{user_input}"
     interraction(app)
   end
 end
