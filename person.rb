@@ -6,7 +6,7 @@ class Person < Nameable
 
   def initialize(age, name = 'Unknown', parent_permission: true)
     super()
-    @id = rand
+    @id = rand(500)
     @name = name
     @age = age
     @parent_permission = parent_permission
