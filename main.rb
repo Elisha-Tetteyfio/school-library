@@ -9,7 +9,7 @@ def options
   print "5 - Create a rental \n"
   print "6 - List all rentals for a person \n"
   print "7 - Quit \n"
-  gets.chomp
+  gets.chomp.to_i
 end
 
 def interraction(app)
