@@ -28,6 +28,4 @@ class App
   def list_people
     @people.each { |s| print "[#{s.class}] Name: #{s.name}, ID: #{s.id}, Age: #{s.age}\n" }
   end
-
-
 end

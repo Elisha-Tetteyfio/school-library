@@ -1,10 +1,10 @@
 class CreateRental
-    def initialize(rental, books, people)
-        @rentals = rental
-        @books = books
-        @people = people
-    end
-   
+  def initialize(rental, books, people)
+    @rentals = rental
+    @books = books
+    @people = people
+  end
+
   def create_rental
     puts 'Enter date'
     date = gets.chomp

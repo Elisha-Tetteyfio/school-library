@@ -1,6 +1,6 @@
 class CreatePerson
-  def initialize(personArray)
-    @personArray = personArray
+  def initialize(people)
+    @people = people
   end
 
   def create_person
@@ -17,7 +17,7 @@ class CreatePerson
       name = gets.chomp
       new_student = Student.new(age, classroom)
       new_student.name = name unless name.empty?
-      @personArray << new_student
+      @people << new_student
       puts " #{new_student.name} added successfully"
     when 2
       print ' Enter teacher age: '
@@ -28,7 +28,7 @@ class CreatePerson
       name = gets.chomp
       new_teacher = Teacher.new(age, specialization)
       new_teacher.name = name unless name.empty?
-      @personArray << new_teacher
+      @people << new_teacher
       puts " #{new_teacher.name} added successfully"
     when 3
       nil
