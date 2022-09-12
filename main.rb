@@ -1,4 +1,5 @@
 require './app'
+require './createPerson'
 
 def options
   print "\nPlease choose an option by entering a number \n\n"
@@ -22,7 +23,7 @@ def interraction(app)
     app.list_people
     interraction(app)
   when 3
-    app.create_person
+    CreatePerson.new(app.students).create_person
     interraction(app)
   when 4
     app.create_book
