@@ -1,5 +1,7 @@
 require './app'
 require './createPerson'
+require './createBook'
+require './createRental'
 
 def options
   print "\nPlease choose an option by entering a number \n\n"
@@ -26,11 +28,13 @@ def interraction(app)
     CreatePerson.new(app.students).create_person
     interraction(app)
   when 4
-    app.create_book
+
+    CreateBook.new(app.books).create_book
     interraction(app)
   when 5
-    app.create_rental
+    CreateRental.new(app.rentals).create_rental
     interraction(app)
+ 
   when 6
     app.list_rentals
     interraction(app)
