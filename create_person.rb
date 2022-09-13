@@ -17,21 +17,15 @@ class CreatePerson
       name = gets.chomp
       new_student = Student.new(age, classroom)
       new_student.name = name unless name.empty?
-      studentObj = {
-        "Name":new_student.name, 
-        "Age":new_student.age, 
-        "Classroom":new_student.classroom, 
-        "ID":new_student.id,
-        "Person":new_student.class,
-        "Rentals":[]
+      student_obj = {
+        Name: new_student.name,
+        Age: new_student.age,
+        Classroom: new_student.classroom,
+        ID: new_student.id,
+        Person: new_student.class,
+        Rentals: []
       }
-      @people << studentObj
-
-      File.open("people.json", "w+") do |file|
-        person = JSON.dump(@people)
-        file.write(person)
-      end
-      puts " #{new_student.name} added successfully"
+      @people << student_obj
     when 2
       print ' Enter teacher age: '
       age = gets.chomp.to_i
@@ -41,27 +35,24 @@ class CreatePerson
       name = gets.chomp
       new_teacher = Teacher.new(age, specialization)
       new_teacher.name = name unless name.empty?
-      teacherObj = {
-        "Name":new_teacher.name, 
-        "Age":new_teacher.age, 
-        "Specialization":new_teacher.specialization, 
-        "ID":new_teacher.id,
-        "Person":new_teacher.class,
-        "Rentals":[]
+      teacher_obj = {
+        Name: new_teacher.name,
+        Age: new_teacher.age,
+        Specialization: new_teacher.specialization,
+        ID: new_teacher.id,
+        Person: new_teacher.class,
+        Rentals: []
       }
-      @people << teacherObj
-
-      File.open("people.json", "w+") do |file|
-        person = JSON.dump(@people)
-        file.write(person)
-      end
-      @people << teacherObj
-      puts " #{new_teacher.name} added successfully"
+      @people << teacher_obj
     when 3
       nil
     else
       puts ' Wrong input option'
       create_person
+    end
+    File.open('people.json', 'w+') do |file|
+      person = JSON.dump(@people)
+      file.write(person)
     end
   end
 end
