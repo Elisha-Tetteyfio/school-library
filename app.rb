@@ -14,11 +14,10 @@ class App
   end
 
   def list_books
-    # @books.each_with_index { |book, i| print "(#{i}) Title: \"#{book.title}\", Author: #{book.author}\n" }
     File.open("book.json", "r") do |file|
-      book = JSON.parse(file)
-      puts book
-        end
+      books = JSON.parse(file.read) 
+      books.each_with_index {|book, i| puts "(#{i}) Title: '#{book["Title"]}', Author: #{book["Author"]} "}
+    end
   end
 
   def list_rentals
