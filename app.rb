@@ -30,6 +30,9 @@ class App
   end
 
   def list_people
-    @people.each { |s| print "[#{s.class}] Name: #{s.name}, ID: #{s.id}, Age: #{s.age}\n" }
+    File.open("people.json", "r") do |file|
+      people = JSON.parse(file.read) 
+      people.each_with_index {|person, i| puts "(#{i}) [#{person["Person"]}] Name: #{person["Name"]}, ID: #{person["ID"]}, Age: #{person["Age"]} "}
+    end
   end
 end
