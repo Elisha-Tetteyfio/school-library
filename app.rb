@@ -1,3 +1,4 @@
+require 'json'
 require './book'
 require './student'
 require './teacher'
@@ -13,7 +14,11 @@ class App
   end
 
   def list_books
-    @books.each_with_index { |book, i| print "(#{i}) Title: \"#{book.title}\", Author: #{book.author}\n" }
+    # @books.each_with_index { |book, i| print "(#{i}) Title: \"#{book.title}\", Author: #{book.author}\n" }
+    File.open("book.json", "r") do |file|
+      book = JSON.parse(file)
+      puts book
+        end
   end
 
   def list_rentals
