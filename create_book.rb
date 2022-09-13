@@ -11,6 +11,7 @@ class CreateBook
     author = gets.chomp
     new_book = Book.new(title, author)
     @books << new_book
+    
     puts " '#{new_book.title}' added successfully"
   end
 end
