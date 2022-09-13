@@ -11,7 +11,7 @@ class CreateBook
     print ' Enter author name: '
     author = gets.chomp
     new_book = Book.new(title, author)
-    bookObj = {"Title":new_book.title, "Author":new_book.author}
+    bookObj = {"Title":new_book.title, "Author":new_book.author, "Rentals":[]}
     @books << bookObj
 
     File.open("book.json", "w+") do |file|

@@ -22,7 +22,8 @@ class CreatePerson
         "Age":new_student.age, 
         "Classroom":new_student.classroom, 
         "ID":new_student.id,
-        "Person":new_student.class
+        "Person":new_student.class,
+        "Rentals":[]
       }
       @people << studentObj
 
@@ -45,7 +46,8 @@ class CreatePerson
         "Age":new_teacher.age, 
         "Specialization":new_teacher.specialization, 
         "ID":new_teacher.id,
-        "Person":new_teacher.class
+        "Person":new_teacher.class,
+        "Rentals":[]
       }
       @people << teacherObj
 

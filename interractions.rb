@@ -15,6 +15,8 @@ class Interraction
       CreateBook.new(app.books).create_book
       interraction(app)
     when 5
+      app.get_books
+      app.get_people
       CreateRental.new(app.rentals, app.books, app.people).create_rental
       interraction(app)
     when 6

@@ -20,19 +20,41 @@ class App
     end
   end
 
+  def get_books
+    File.open("book.json", "r") do |file|
+      books = JSON.parse(file.read) 
+      @books=[]
+      books.each {|book| @books << book}
+    end
+  end
+
   def list_rentals
+    File.open("rentals.json", "r") do |file|
+      rents = JSON.parse(file.read)
+      @rentals =[]
+      rents.each {|book| @rentals << rents}
+    end
     puts 'Enter person ID: '
     user_input = gets.chomp.to_i
     user_rentals = []
-    @rentals.each { |r| user_input == r.person.id ? user_rentals << r : '' }
+    @rentals[0].each { |r| user_input == r["ID"] ? user_rentals << r : '' }
+
     print "Rentals: \n"
-    user_rentals.each { |r| print " Date: #{r.date}, Title: #{r.book.title}, Author: #{r.book.author}\n" }
+    user_rentals.each { |r| print " Date: #{r["Date"]}, Title: #{r["Title"]}, Author: #{r["Author"]}\n" }
   end
 
   def list_people
     File.open("people.json", "r") do |file|
       people = JSON.parse(file.read) 
       people.each_with_index {|person, i| puts "(#{i}) [#{person["Person"]}] Name: #{person["Name"]}, ID: #{person["ID"]}, Age: #{person["Age"]} "}
+    end
+  end
+
+  def get_people
+    File.open("people.json", "r") do |file|
+      people = JSON.parse(file.read)
+      @people=[] 
+      people.each {|person| @people << person}
     end
   end
 end
