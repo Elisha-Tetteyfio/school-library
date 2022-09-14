@@ -1,3 +1,4 @@
+require 'json'
 class CreateBook
   def initialize(book)
     @books = book
@@ -10,7 +11,14 @@ class CreateBook
     print ' Enter author name: '
     author = gets.chomp
     new_book = Book.new(title, author)
-    @books << new_book
+    book_obj = { Title: new_book.title, Author: new_book.author, Rentals: [] }
+    @books << book_obj
+
+    File.open('book.json', 'w+') do |file|
+      books = JSON.dump(@books)
+      file.write(books)
+    end
+
     puts " '#{new_book.title}' added successfully"
   end
 end
