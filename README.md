@@ -9,9 +9,8 @@
 
 - Ruby
 
-## Live Demo (Not available yet)
-
-[Live Demo Link](https://livedemo.com)
+## Tests
+- To run tests, run `rspec spec`
 
 
 ## Getting Started
